@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 5
+
+int main()
+{
+    float pilha[TAM], pilha_aux[TAM];
+    int topo, topo_aux, i,op;
+    topo=-1;
+    topo_aux=-1;
+    do
+    {
+        system("cls");
+        printf("* * * *   M E N U   * * * *\n\n");
+        printf("\n1 - Push");
+        printf("\n2 - Pop");
+        printf("\n3 - Impressao da pilha");
+        printf("\n4 - Move pilha para pilha auxiliar");
+        printf("\n9 - Sair");
+        printf("\n\nDigite a sua opcao: ");
+        scanf("%d",&op);
+
+        switch(op)
+        {
+            case 1: system("cls");
+                    printf("* * * *   P U S H   * * * *\n\n");
+                    if (topo<TAM-1)
+                    {
+                        topo++;
+                        printf("\nDigite o valor para ser empilhado: ");
+                        scanf("%f",&pilha[topo]);
+                        printf("\nElemento inserido com sucesso!!\n\n");
+                    }
+                    else
+                        printf("\n\nImpossivel inserir, pilha cheia!!\n\n");
+                    system("pause");
+                    break;
+
+            case 2: system("cls");
+                    printf("* * * *   P O P   * * * *\n\n");
+                    if (topo>=0)
+                    {
+                        printf("\nElemento a ser removido: %f\n\n",pilha[topo]);
+                        topo--;
+                        printf("\nElemento removido com sucesso!!\n\n");
+                    }
+                    else
+                        printf("\nImpossivel remover....\nPilha vazia!\n\n");
+                    system("pause");
+                    break;
+
+           case 3: system("cls");
+                   printf("* * * *   P I L H A   * * * *\n\n\n");
+                   for (i=topo;i>=0;i--)
+                    printf("%f\n",pilha[i]);
+                   printf("\n\n\n");
+                   system("pause");
+                   break;
+
+           case 4: system("cls");
+                   printf("\n* * * *   M o v e    P i l h a   * * * *\n\n");
+                   topo_aux=-1;
+                   printf("Pilha: \n");
+                   for (i=topo;i>=0;i--)
+                     printf("%f\n",pilha[i]);
+
+                   printf("Pilha auxiliar: \n");
+                   for (i=topo_aux;i>=0;i--)
+                     printf("%f\n",pilha_aux[i]);
+
+
+                   for(i=topo;i>=0;i--)
+                   {
+                       topo_aux++;
+                       pilha_aux[topo_aux]=pilha[topo];
+                       topo--;
+                   }
+                   printf("\n\nResultado: \n");
+                   printf("Pilha: \n");
+
+                   for (i=topo;i>=0;i--)
+                     printf("%f\n",pilha[i]);
+
+                   printf("Pilha auxiliar: \n");
+                   for (i=topo_aux;i>=0;i--)
+                     printf("%f\n",pilha_aux[i]);
+
+                   printf("\n\n");
+
+                   printf("\n\n");
+                   system("pause");
+                   break;
+
+        }
+
+
+    }while(op!=9);
+
+
+    return 0;
+}

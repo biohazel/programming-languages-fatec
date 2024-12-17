@@ -1,0 +1,188 @@
+EX1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float nota1, nota2, media;
+    printf("Digite a primeira nota: ");
+    scanf("%f",&nota1);
+    printf("\nDigite a segunda nota: ");
+    scanf("%f",&nota2);
+    media = (nota1+nota2)/2;
+    printf("\n\nA sua media eh: %.1f\n\n",media);
+    if (media>=6)
+           printf("\n\nAprovado!\n\n");
+    else
+      if (media>3)
+          printf("\n\nReprovado!\n\n");
+      else
+          printf("\n\nExame!\n\n");
+
+
+    return 0;
+}
+
+EX1 variacao
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float nota1, nota2, media;
+    printf("Digite a primeira nota: ");
+    scanf("%f",&nota1);
+    printf("\nDigite a segunda nota: ");
+    scanf("%f",&nota2);
+    media = (nota1+nota2)/2;
+    printf("\n\nA sua media eh: %.1f\n\n",media);
+    if (media>=6)
+           printf("\n\nAprovado!\n\n");
+    else
+      if ((media>=3 && media<6))
+          printf("\n\nEXAME!\n\n");
+      else
+          printf("\n\nReprovado!\n\n");
+
+
+    return 0;
+}
+ EX2
+ 
+ #include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i;
+    printf("\n\nDigite um numero inteiro: ");
+    scanf("%d",&i);
+
+    if ((i>=28) && (i<30))
+        printf("\nO numero esta no primeiro intervalo...\n\n");
+
+    if (  ((i>35) && (i<40)) || ((i>=90) && (i<=100)))
+        printf("\nO numero esta no segundo intervalo...\n\n");
+
+    if ((i==100) || ((i>=200) && (i<=300)) || ((i>500) && (i<600)))
+        printf("\nO numero esta no terceiro intervalo...\n\n");
+
+
+    return 0;
+}
+
+EX3
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float a,b,c;
+    printf("\nDigite a primeira medida: ");
+    scanf("%f",&a);
+    printf("\nDigite a segunda medida: ");
+    scanf("%f",&b);
+    printf("\nDigite a terceira medida: ");
+    scanf("%f",&c);
+
+    if (  (a<(b+c)) && (b<(c+a)) && (c<(a+b))  )
+    {
+        printf("\nAs medidas formam um triangulo...\n\n");
+        if ((a==b) && (b==c))
+            printf("\nTriangulo equilatero...\n\n");
+        else
+            if ((a!=b) && (b!=c) && (c!=a))
+               printf("\nTriangulo escaleno....\n");
+            else
+               printf("\nTriangulo isosceles...");
+
+    }
+    else
+        printf("\n\nAs medidas NAO formam um triangulo...\n\n");
+
+
+    return 0;
+}
+
+
+EX3 (variacao)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float a,b,c;
+    printf("\nDigite a primeira medida: ");
+    scanf("%f",&a);
+    printf("\nDigite a segunda medida: ");
+    scanf("%f",&b);
+    printf("\nDigite a terceira medida: ");
+    scanf("%f",&c);
+
+    if (  (a<(b+c)) && (b<(c+a)) && (c<(a+b))  )
+    {
+        printf("\nAs medidas formam um triangulo...\n\n");
+        if ((a==b) && (b==c))
+            printf("\nTriangulo equilatero...\n\n");
+        else
+            if (((a==b) && (b!=c)) || ((b==c) && (c!=a)) || ((c==a) && (a!=b)) )
+               printf("\nTriangulo isosceles....\n");
+            else
+               printf("\nTriangulo escaleno...");
+
+    }
+    else
+        printf("\n\nAs medidas NAO formam um triangulo...\n\n");
+
+
+    return 0;
+}
+
+EX4
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float num1, num2;
+    char op;
+    printf("\nDigite o primeiro numero: ");
+    scanf("%f",&num1);
+    printf("\nDigite a operacao desejada <+><-><*></> : \n\n");
+    fflush(stdin);
+    scanf("%c",&op);
+    printf("\nDigite o segundo numero: ");
+    scanf("%f",&num2);
+
+    switch(op)
+    {
+        case '+' : printf("\n%.2f + %.2f = %.2f\n",num1,num2,num1+num2);
+                   break;
+
+        case '-' : printf("\nSubtracao = %.2f",num1-num2);
+                   break;
+
+        case '*' : printf("\nMultiplicacao = %.2f",num1*num2);
+                   break;
+
+        case '/' : if (num2==0)
+                      printf("\nImpossivel dividir por zero...\n");
+                   else
+                      printf("\nDividao = %.2f",num1/num2);
+                   break;
+    }
+
+
+
+
+
+
+
+    return 0;
+}
+

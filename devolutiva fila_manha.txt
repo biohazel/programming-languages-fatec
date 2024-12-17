@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 3
+
+int main()
+{
+    int fila[TAM], fim, i, op, elemento;
+    fim=-1;
+    do
+    {
+        system("cls");
+        printf("* * * *   M E N U   * * * *\n\n");
+        printf("\n1 - Inserir");
+        printf("\n2 - Remover");
+        printf("\n3 - Imprimir");
+        printf("\n9 - Sair");
+        printf("\n\nDigite a sua opcao: ");
+        scanf("%d",&op);
+        switch(op)
+        {
+            case 1: system("cls");
+                    printf("* * * *   Inserir   * * * *\n\n");
+                    if (fim<=(TAM-2))
+                    {
+                        printf("\nDigite o elemento a ser inserido: ");
+                        scanf("%d",&elemento);
+                        fim++;
+                        fila[fim]=elemento;
+                        printf("\nElemento inserido com sucesso!!\n\n");
+                    }
+                    else
+                        printf("\n\nImpossivel inserir...\n Fila cheia!!\n\n");
+
+                    system("pause");
+                    break;
+
+           case 2: system("cls");
+                    printf("* * * *   Remover   * * * *\n\n");
+                    if (fim>=0)
+                    {
+                       for(i=0;i<fim;i++)
+                            fila[i]=fila[i+1];
+                       fim--;
+                       printf("\n\nElemento removido com sucesso!!\n\n");
+                    }
+                    else
+                        printf("\n\nImpossivel remover...\nFila vazia!!\n\n\n");
+
+                    system("pause");
+                    break;
+
+           case 3:  system("cls");
+                    printf("* * * *   Imprimir   * * * *\n\n");
+
+                    if(fim<0)
+                       printf("\n\n** Fila Vazia!! **\n\n");
+                    else
+                    for(i=0;i<=fim;i++)
+                        printf("%d\t",fila[i]);
+
+                    printf("\n\n\n");
+                    system("pause");
+                    break;
+
+        }
+
+
+
+    }while(op!=9);
+
+
+    return 0;
+}

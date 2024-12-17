@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Sfuncionario{
+    char nome[50];
+    float salario;
+
+};
+
+
+
+int main(){
+
+    struct Sfuncionario f1, f2;
+
+    printf("\nDigite o nome: ");
+    fflush(stdin);
+    gets(f1.nome);
+    printf("\nDigite o salario: ");
+    scanf("%f",&f1.salario);
+
+    printf("\nDigite o nome: ");
+    fflush(stdin);
+    gets(f2.nome);
+    printf("\nDigite o salario: ");
+    scanf("%f",&f2.salario);
+
+    printf("\nNome   : %s",f1.nome);
+    printf("\nSalario: %f",f1.salario);
+
+    printf("\nNome   : %s",f2.nome);
+    printf("\nSalario: %f",f2.salario);
+
+
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Sfuncionario{
+    char nome[50];
+    float salario;
+
+};
+
+typedef struct Sfuncionario Tfuncionario;
+
+
+int main(){
+
+    Tfuncionario f1, f2;
+
+    printf("\nDigite o nome: ");
+    fflush(stdin);
+    gets(f1.nome);
+    printf("\nDigite o salario: ");
+    scanf("%f",&f1.salario);
+
+    printf("\nDigite o nome: ");
+    fflush(stdin);
+    gets(f2.nome);
+    printf("\nDigite o salario: ");
+    scanf("%f",&f2.salario);
+
+    printf("\nNome   : %s",f1.nome);
+    printf("\nSalario: %f",f1.salario);
+
+    printf("\nNome   : %s",f2.nome);
+    printf("\nSalario: %f",f2.salario);
+
+
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct Sfuncionario{
+    char nome[50];
+    float salario;
+
+}Tfuncionario;
+
+//typedef struct Sfuncionario Tfuncionario;
+
+
+int main(){
+
+    Tfuncionario funcionarios[2];
+
+    for(int i=0;i<2;i++)
+    {
+        printf("\nDigite o nome: ");
+        fflush(stdin);
+        gets(funcionarios[i].nome);
+        printf("\nDigite o salario: ");
+        scanf("%f",&funcionarios[i].salario);
+    }
+
+    printf("\n\n");
+
+   for (int i=0;i<2;i++)
+   {
+        printf("\n\nNome    : %s",funcionarios[i].nome);
+        printf("\nSalario : %f",funcionarios[i].salario);
+   }
+
+
+
+    return 0;
+}

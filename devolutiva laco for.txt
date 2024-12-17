@@ -1,0 +1,94 @@
+EX1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int acumulador, contador, numero, quantidade;
+    printf("\nDigite a quantidade de numeros que deseja digitar: ");
+    scanf("%d",&quantidade);
+    acumulador=0;
+    contador=0;
+    for (int i=1;i<=quantidade;i++)
+    {
+        printf("\nDigite um numero: ");
+        scanf("%d",&numero);
+        if (numero%2==0)
+            {
+                acumulador+=numero;
+                contador++;
+            }
+    }
+
+    printf("\nA somatoria dos numero pares digitados eh: %d\n\n",acumulador);
+    printf("\nA quantidade de numeros pares foi: %d\n\n",contador);
+
+
+
+    printf("Hello world!\n");
+    return 0;
+}
+
+
+
+EX2
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float temperatura, acc_temp,media;
+    int quantidade, i;
+    printf("\nDigite a quantidade de temperaturas: ");
+    scanf("%d",&quantidade);
+    acc_temp=0;
+    for(i=0;i<quantidade;i++)
+    {
+        printf("\nDigite a %d# temperatura: ",i+1);
+        scanf("%f",&temperatura);
+        acc_temp=acc_temp+temperatura;
+    }
+    media=acc_temp/quantidade;
+
+    printf("\n\nA media das temperaturas eh: %.2f\n\n",media);
+
+    system("pause");
+
+    return 0;
+}
+
+EX3
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    float s,n,d,x;
+    int i, termos;
+    x=1.0;
+    n=2.0;
+    d=2.0;
+    printf("\nDigite a quantidade de termos: ");
+    scanf("%d",&termos);
+    s=0.0;
+    for(i=1;i<=termos;i++)
+    {
+        s=s+pow(x,(n/d));
+        printf("\n\n%f\n\n",s);
+        system("pause");
+        n=n+1.0;
+        d=d*2.0;
+        x++;
+    }
+
+    printf("\nA somatoria dos %d primeiros termos da serie eh: %.4f\n\n",i-1,s);
+
+
+    system("pause");
+
+    return 0;
+}

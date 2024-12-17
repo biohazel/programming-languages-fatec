@@ -1,0 +1,279 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 3
+
+
+typedef struct SFunc{
+   char nome[50];
+   float salario;
+}TFunc;
+
+int menu()
+{
+    int op;
+    system("cls");
+    printf("* * * *   M E N U    * * * *\n\n");
+    printf("\n1 - Inserir");
+    printf("\n2 - Listar");
+    printf("\n3 - Apagar todos os registros");
+    printf("\n9 - Sair\n");
+    printf("\nDigite a sua opcao: ");
+    scanf("%d",&op);
+    return op;
+}
+
+void inserir(TFunc f[])
+{
+    int i;
+    for (i=0;i<TAM;i++)
+    {
+        printf("\n\nDigite o nome: ");
+        fflush(stdin);
+        gets(f[i].nome);
+        printf("\nDigite o salario: ");
+        scanf("%f",&f[i].salario);
+    }
+    printf("\n\nFuncionarios cadastrados com sucesso!\n\n");
+    system("pause");
+}
+
+void listar (TFunc f[])
+{
+    int i;
+    system("cls");
+    printf("* * * *   Listagem de funcionarios   * * * *\n\n");
+    for(i=0;i<TAM;i++)
+    {
+       printf("\n\nNome\t:%s",f[i].nome);
+       printf("\nSalario\t:%.2f",f[i].salario);
+    }
+    printf("\n\n");
+    system("pause");
+}
+
+void apagar (TFunc f[])
+{
+    int i;
+    for (i=0;i<TAM;i++)
+    {
+        strcpy(f[i].nome,"");
+        f[i].salario=0;
+    }
+}
+
+
+int main()
+{
+    TFunc funcionarios[TAM];
+    int opcao;
+    do
+    {
+        opcao=menu();
+        switch(opcao)
+        {
+           case 1:  inserir(funcionarios);
+                    break;
+
+           case 2:  listar(funcionarios);
+                    break;
+
+           case 3:  apagar(funcionarios);
+                    break;
+
+        }
+    }while(opcao!=9);
+    return 0;
+}
+
+
+
+EX2
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 3
+
+
+typedef struct SFunc{
+   char nome[50];
+   float salario;
+}TFunc;
+
+typedef struct SLista{
+  TFunc funcionarios[TAM];
+  int fim;
+}TLista;
+
+
+int menu()
+{
+    int op;
+    system("cls");
+    printf("* * * *   M E N U    * * * *\n\n");
+    printf("\n1 - Inserir");
+    printf("\n2 - Listar");
+    printf("\n3 - Apagar todos os registros");
+    printf("\n9 - Sair\n");
+    printf("\nDigite a sua opcao: ");
+    scanf("%d",&op);
+    return op;
+}
+
+int inserir(TLista *l, char n[], float s, int p)
+{
+    int i;
+    if (l->fim>=(TAM-1))
+        return 1;
+    if ((p<0) || (p>(l->fim+1)))
+        return 2;
+    l->fim=l->fim+1;
+    for (i=l->fim;i>p;i--)
+    {
+        strcpy(l->funcionarios[i].nome,l->funcionarios[i-1].nome);
+        l->funcionarios[i].salario=l->funcionarios[i-1].salario;
+    }
+    strcpy(l->funcionarios[p].nome,n);
+    l->funcionarios[p].salario=s;
+    return 0;
+}
+
+void listar (TLista l)
+{
+    int i;
+    system("cls");
+    printf("* * * *   Listagem de funcionarios   * * * *\n\n");
+    for(i=0;i<=l.fim;i++)
+    {
+       printf("\n\nNome\t:%s",l.funcionarios[i].nome);
+       printf("\nSalario\t:%.2f",l.funcionarios[i].salario);
+    }
+    printf("\n\n");
+    system("pause");
+}
+
+void apagar (TFunc f[])
+{
+    int i;
+    for (i=0;i<TAM;i++)
+    {
+        strcpy(f[i].nome,"");
+        f[i].salario=0;
+    }
+}
+
+
+int main()
+{
+    TLista cadastro_funcionarios;
+    char nome_func[50];
+    float salario_func;
+    int posicao,flag;
+    cadastro_funcionarios.fim=-1;
+    int opcao;
+    do
+    {
+        opcao=menu();
+        switch(opcao)
+        {
+           case 1:  system("cls");
+                    printf("* * * *   Cadastrar Funcionario   * * * *\n\n");
+                    printf("\nDigite o nome: ");
+                    fflush(stdin);
+                    gets(nome_func);
+                    printf("\nDigite o salario: ");
+                    scanf("%f",&salario_func);
+                    printf("\nDigite posicao entre [0] e [%d]: ",cadastro_funcionarios.fim+1);
+                    scanf("%d",&posicao);
+                    flag = inserir(&cadastro_funcionarios,nome_func,salario_func,posicao);
+                    if (flag==0)
+                        printf("\nFuncionario inserido corretamente...\n\n");
+                    else
+                        if (flag==1)
+                            printf("\nImpossivel inserir, lista cheia!\n\n");
+                        else
+                            printf("\nImpossivel inserir, posicao invalida!\n\n");
+                    system("pause");
+                    break;
+
+           case 2:  listar(cadastro_funcionarios);
+                    break;
+
+           case 3:  cadastro_funcionarios.fim=-1;
+                    printf("\n\nCadastro apagado com sucesso!!\n\n");
+                    system("pause");
+                    break;
+
+        }
+    }while(opcao!=9);
+    return 0;
+}
+
+NOTAS de AULA
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 3
+
+
+
+int main()
+{
+    char nome1[50], nome2[50];
+    strcpy(nome1,"Ana");
+    strcpy(nome2,"Ana");
+    printf("%s\t%s\n",nome1,nome2);
+    printf("%d\n\n",strcmp(nome1,nome2));
+
+    strcpy(nome1,"Ana");
+    strcpy(nome2,"Joao");
+    printf("%s\t%s\n",nome1,nome2);
+    printf("%d\n\n",strcmp(nome1,nome2));
+
+    strcpy(nome1,"Joao");
+    strcpy(nome2,"Ana");
+    printf("%s\t%s\n",nome1,nome2);
+    printf("%d\n\n",strcmp(nome1,nome2));
+
+
+    return 0;
+}
+
+
+NOTAS DE AULA
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
+int main()
+{
+    char texto[50];
+    printf("\nDigite algo: ");
+    fflush(stdin);
+    gets(texto);
+
+    printf("\n\n* * *   Criptografando   * * *");
+    for (int i = 0;texto[i]!='\0';i++)
+        texto[i]=texto[i]+3;
+
+    printf("\nTexto criptografado: \n");
+    printf("%s",texto);
+
+    printf("\n\n* * *   Descriptografando   * * *");
+    for (int i = 0;texto[i]!='\0';i++)
+        texto[i]=texto[i]-3;
+
+    printf("\nTexto descriptografado: \n");
+    printf("%s",texto);
+
+
+
+
+    return 0;
+
+}

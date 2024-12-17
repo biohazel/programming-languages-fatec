@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 10
+
+
+int main()
+{
+
+    int vetor[TAM], vetor_aux[TAM];
+    int i, op, maior, menor, quantidade;
+
+    do
+    {
+        system("cls");
+        printf("* * * *   M E N U   * * * *\n\n");
+        printf("\n1 - Registrar elementos no vetor");
+        printf("\n2 - Imprimir vetor");
+        printf("\n3 - Dobrar numeros registrados no vetor");
+        printf("\n4 - Imprimir os numeros pares do vetor");
+        printf("\n5 - Imprimir o maior e o menor elemento");
+        printf("\n6 - Imprimir a quantidade de numeros impares");
+        printf("\n7 - Imprimir os elementos que estao nas posicoes pares");
+        printf("\n8 - Copiar elementos em um vetor auxiliar de forma invertida");
+        printf("\n9 - Sair");
+        printf("\n\nDigite a sua opcao: ");
+        scanf("%d",&op);
+
+        switch(op)
+        {
+            case 1 : system("cls");
+                     printf("* * * *   Registrar elementos no vetor   * * * *\n\n");
+                     for (i=0;i<TAM;i++)
+                     {
+                         printf("\nDigite o %d# elemento: ",i);
+                         scanf("%d",&vetor[i]);
+                     }
+                     printf("\n\nElementos registrados com sucesso!!\n\n");
+                     system("pause");
+                     break;
+
+            case 2 : system("cls");
+                     printf("* * * *   I m p r e s s a o    d o   v e t o r   * * * *\n\n");
+                     for(i=0;i<TAM;i++)
+                        printf("%d\n",vetor[i]);
+                     printf("\n\nImpressao concluida.....\n\n");
+                     system("pause");
+                     break;
+
+
+            case 3 : system("cls");
+                     printf("* * * *   Dobrar elementos do vetor   * * * *\n\n");
+                     for(i=0;i<TAM;i++)
+                             vetor[i]=2*vetor[i];
+                     printf("\n\nElementos dobrados com sucessso!!\n\n");
+                     system("pause");
+                     break;
+
+            case 4 : system("cls");
+                     printf("* * * *   Impressao dos pares   * * * *\n\n");
+                     for(i=0;i<TAM;i++)
+                        if (vetor[i]%2==0)
+                            printf("\n%d",vetor[i]);
+                     printf("\n\n");
+                     system("pause");
+                     break;
+
+            case 5 : system("cls");
+                     printf("* * * *   Maior e menor numero do vetor   * * * *\n\n");
+                     maior=vetor[0];
+                     menor=vetor[0];
+                     for(i=1;i<TAM;i++)
+                     {
+                         if (vetor[i]>maior)
+                            maior=vetor[i];
+                         if (vetor[i]<menor)
+                             menor=vetor[i];
+                     }
+                     printf("\n\nMaior = %d",maior);
+                     printf("\nMenor= %d\n\n",menor);
+                     system("pause");
+                     break;
+
+            case 6:  system("cls");
+                     printf("* * * *   Quantidade de numeros impares do vetor   * * * *\n\n");
+                     quantidade=0;
+                     for(i=0;i<TAM;i++)
+                        if ((vetor[i]%2)!=0)
+                            quantidade++;
+                     printf("\n\nA quantidade de numeros impares eh: %d\n\n",quantidade);
+                     system("pause");
+                     break;
+
+            case 7 : system("cls");
+                     printf("* * * *   Numeros nas posicoes pares do vetor   * * * *\n\n");
+                     for(i=0;i<TAM;i=i+2)
+                        printf("\n%d",vetor[i]);
+                     printf("\n\n");
+                     system("pause");
+                     break;
+
+            case 8 : system("cls");
+                     printf("* * * *   Copia invertida do vetor   * * * *\n\n");
+                     for(i=0;i<TAM;i++)
+                        vetor_aux[i]=vetor[TAM-1-i];
+
+                     for(i=0;i<TAM;i++)
+                        printf("%d\t%d\n",vetor[i],vetor_aux[i]);
+                     printf("\n\n");
+                     system("pause");
+                     break;
+
+
+        }
+
+
+
+    }while(op!=9);
+
+
+    return 0;
+}
